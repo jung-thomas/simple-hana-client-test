@@ -7,6 +7,7 @@ if (!process.env.TARGET_CONTAINER) {
 } else {
     options = xsenv.getServices({ hana: { name: process.env.TARGET_CONTAINER } })
 }
+version()
 testHdbext()
 testHanaClient()
 testHdbextPromise()
@@ -101,4 +102,34 @@ function testHdb() {
             return console.table(results)
         })
     })
+}
+
+function version() {
+    const log = console.log;
+    const info = versionInt();
+    Object.keys(info).forEach(key => log(`${key}: ${info[key]}`));
+    log(`\n`)
+
+    function versionInt() {
+        const info = version4 ();
+        Object.defineProperty(info, 'home', { value: __dirname });  
+        info['home'] = info.home;
+        return info;
+      }
+      
+      function version4 (pkgPath='.', info={}, parentPath) {
+        try {
+          const pkj = require(pkgPath + '/package.json');
+          const name = pkj.name || pkgPath;
+          if (info[name])  return; // safeguard against circular dependencies
+          info[name] = pkj.version;
+          // recurse sap packages in dependencies...
+          for (let dep in pkj.dependencies) if (dep.startsWith('@sap/') || dep.startsWith('sap-hdbext-promisfied') || dep.startsWith('hdb'))   version4 (dep, info, pkgPath);
+        } catch (e) {
+          if (e.code !== 'MODULE_NOT_FOUND')  info[pkgPath] = '-- missing --';  // unknown error
+          else if (parentPath)  version4 (parentPath+'/node_modules/'+pkgPath, info);
+        }
+        return info
+      }
+
 }
