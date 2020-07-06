@@ -1,0 +1,29 @@
+{
+	"VCAP_SERVICES": {
+		"hana": [
+			{
+				"name": "hana-cli",
+				"label": "hana",
+				"tags": [
+					"hana",
+					"database",
+					"relational"
+				],
+				"plan": "hdi-shared",
+				"credentials": {
+					"password": "HanaRocks01",
+					"port": "39015",
+					"encrypt": false,
+					"db_hosts": [
+						{
+							"port": "39015",
+							"host": "hxehost"
+						}
+					],
+					"host": "hxehost",
+					"user": "SYSTEM"
+				}
+			}
+		]
+	}
+}

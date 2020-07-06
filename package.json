@@ -1,0 +1,31 @@
+{
+  "name": "simple-hana-client-test",
+  "version": "1.0.0",
+  "description": "A simple HANA Client test",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jung-thomas/simple-hana-client-test.git"
+  },
+  "keywords": [
+    "HANA"
+  ],
+  "author": "https://github.com/jung-thomas",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/jung-thomas/simple-hana-client-test/issues"
+  },
+  "homepage": "https://github.com/jung-thomas/simple-hana-client-test#readme",
+  "dependencies": {
+    "@sap/hana-client": "^2.5.86",
+    "@sap/hdbext": "^6.2.2",
+    "@sap/xsenv": "^3.0.0",
+    "dotenv": "^8.2.0",
+    "hdb": "^0.18.0",
+    "sap-hdbext-promisfied": "^2.202006.1"
+  }
+}
