@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/jung-thomas/simple-hana-client-test#readme",
   "dependencies": {
-    "@sap/hana-client": "^2.5.86",
+    "@sap/hana-client": "^2.21.31",
     "@sap/hdbext": "^6.2.2",
     "@sap/xsenv": "^3.0.0",
     "dotenv": "^8.2.0",
